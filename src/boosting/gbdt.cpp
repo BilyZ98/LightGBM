@@ -709,7 +709,7 @@ double GBDT::GetLowerBoundValue() const {
 
 void GBDT::ResetTrainingData(const Dataset* train_data, const ObjectiveFunction* objective_function,
                              const std::vector<const Metric*>& training_metrics) {
-  if (train_data != train_data_ && !train_data_->CheckAlign(*train_data)) {
+  if (train_data_ && train_data != train_data_ && !train_data_->CheckAlign(*train_data)) {
     Log::Fatal("Cannot reset training data, since new training data has different bin mappers");
   }
 
